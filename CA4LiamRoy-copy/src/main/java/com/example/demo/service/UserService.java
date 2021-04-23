@@ -8,11 +8,11 @@ import com.example.demo.entities.User;
 import com.example.demo.web.dto.UserRegistrationDto;
 
 //Strategy Pattern
-public interface UserService {
+public interface UserService extends UserDetailsService{
 
 	User save(UserRegistrationDto registrationDto);
 	public User findByUsernameAndPassword(String username, String password);
-    public User findByUsername(String username);
+    	public User findByUsername(String username);
   
 	
 }
