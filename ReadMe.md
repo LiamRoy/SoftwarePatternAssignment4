@@ -1,14 +1,15 @@
 Notes for the application:
 
-App isn't workin because I have left out security functionality in the final product by accident. Some have been commented out or forgot to put back in.
+App sent through zip isn't working because I have left out security functionality in the final product by accident. Some have been commented out or forgot to put back in.
 Without it, you can't sign in.
-Therefore:
+Therefore, this is what needs to be added in:
 
 1.)
     Make sure securityConfig.java isn't commented out
 
 2.) User service files need to be fixed because i left out an extends part.
     The extends UserDetailsService is missing from the class and therefore the login won't work.
+    password is not encoded in zip so therefore wont work.
 
 Copy code to make sure it works, apologies.
 
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService{
 	public User save(UserRegistrationDto registrationDto) {
 		User user = new User(registrationDto.getEmail(), 
 				registrationDto.getUsername(),
-				registrationDto.getPassword(),registrationDto.getAddress()
+				passwordEncoder.encode(registrationDto.getPassword()),registrationDto.getAddress()
 				,registrationDto.getPayment(), Arrays.asList(new Role("ROLE_USER")));
 		
 		return userRepository.save(user);
