@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService{
 	public User save(UserRegistrationDto registrationDto) {
 		User user = new User(registrationDto.getEmail(), 
 				registrationDto.getUsername(),
-				passwordEncoder.encode(registrationDto.getPassword()),registrationDto.getAddress()
+				registrationDto.getPassword(),registrationDto.getAddress()
 				,registrationDto.getPayment(), Arrays.asList(new Role("ROLE_USER")));
 		
 		return userRepository.save(user);
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService{
         return userRepository.findByUsername(username);
     }
 
-	/*@Override
+	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findByEmail(username);
 		if(user == null) {
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService{
 	
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
-	}*/
+	}
 
 	
 	
