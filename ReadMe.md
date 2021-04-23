@@ -3,6 +3,7 @@ Notes for the application:
 App isn't workin because I have left out security functionality in the final product by accident. Some have been commented out or forgot to put back in.
 Without it, you can't sign in.
 Therefore:
+
 1.)
     Make sure securityConfig.java isn't commented out
 
